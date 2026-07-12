@@ -1,0 +1,456 @@
+/* ==========================================================================
+   CARGA DE FUENTES LOCALES (NUNITO)
+   ========================================================================== */
+@font-face {
+    font-family: 'Nunito';
+    src: url('Nunito-Regular.ttf') format('truetype');
+    font-weight: 400; /* Normal */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('Nunito-Bold.ttf') format('truetype');
+    font-weight: 700; /* Negrita */
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Nunito';
+    src: url('Nunito-Black.ttf') format('truetype');
+    font-weight: 900; /* Extra Negrita */
+    font-style: normal;
+}
+
+/* ==========================================================================
+   ESTILOS GENERALES Y CONFIGURACIÓN MÓVIL
+   ========================================================================== */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #1c140d; 
+    color: #e8dcc4;
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.1rem; 
+    
+    /* Evita que el texto se ponga azul al tocar rápido en el teléfono */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Capa de fondo con efecto Ken Burns optimizado */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Imagenes_FarmTown/fondo.png');
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    z-index: -1; 
+    
+    /* Fuerza el uso de la GPU para que vaya súper fluido en celulares */
+    will-change: transform;
+    animation: zoomFondo 25s ease-in-out infinite alternate;
+}
+
+@keyframes zoomFondo {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.06); }
+}
+
+.contenedor {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: rgba(43, 29, 20, 0.92); 
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid #5a3c24;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.8);
+    backdrop-filter: blur(4px); 
+    -webkit-backdrop-filter: blur(4px);
+}
+
+/* Logo con flotación sutil */
+.logo-juego {
+    max-width: 100%;
+    height: auto;
+    max-height: 130px; 
+    display: block;
+    margin: 0 auto 10px auto;
+    filter: drop-shadow(0px 6px 8px rgba(0,0,0,0.8));
+    animation: flotar 3s ease-in-out infinite; 
+}
+
+@keyframes flotar {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Títulos y tipografías */
+h1 { 
+    color: #8cc63f;
+    text-shadow: 2px 2px 0px #000;
+    font-size: 2.2rem;
+    font-weight: 900;
+    margin: 10px 0;
+}
+
+h2 {
+    color: #c49a6c;
+    text-shadow: 2px 2px 0px #000;
+    font-size: 1.8rem;
+    font-weight: 900;
+    margin-bottom: 15px;
+}
+
+h3.titulo-categoria {
+    color: #d8b488;
+    text-shadow: 2px 2px 0px #000;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    text-align: left;
+    border-bottom: 2px dashed #5a3c24;
+    padding-bottom: 4px;
+}
+
+p {
+    color: #bfa888;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 5px 0;
+}
+
+hr { 
+    border: 0;
+    border-top: 2px dashed #5a3c24; 
+    margin: 25px 0; 
+}
+
+/* ==========================================================================
+   GRID DE SEMILLAS RESPONSIVO
+   ========================================================================== */
+.grid-semillas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 12px;
+    margin-top: 10px;
+}
+
+button.btn-semilla {
+    background-color: #c49a6c;
+    color: #2b1d14;
+    border: 2px solid #5a3c24;
+    border-bottom: 5px solid #3d2614;
+    padding: 10px 5px;
+    border-radius: 8px; 
+    font-size: 1.05rem;
+    font-weight: 900;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    transition: background-color 0.1s, transform 0.1s;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px; 
+    
+    /* Optimiza la respuesta táctil en pantallas móviles */
+    touch-action: manipulation;
+}
+
+button.btn-semilla img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain; 
+    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.25));
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+button.btn-semilla:hover {
+    background-color: #d8b488;
+}
+
+button.btn-semilla:active {
+    border-bottom: 2px solid #3d2614;
+    transform: translateY(3px);
+}
+
+/* ==========================================================================
+   SECCIÓN DE ALARMAS ACTIVAS
+   ========================================================================== */
+.lista-alarmas {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.alarma-activa {
+    background-color: rgba(28, 20, 13, 0.88); 
+    border: 2px solid #5a3c24;
+    border-left: 6px solid #c49a6c;
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
+    text-align: left;
+}
+
+.alarma-activa b {
+    color: #8cc63f;
+}
+
+.alarma-lista {
+    background-color: #8cc63f;
+    color: #1c140d;
+    font-weight: 900;
+    border: 2px solid #5a3c24;
+    border-left: 6px solid #1c140d;
+    animation: parpadeo 1s infinite;
+}
+
+.alarma-lista b {
+    color: #1c140d;
+}
+
+/* Botón de eliminar optimizado para dedos */
+.btn-eliminar {
+    background-color: #b33939;
+    color: white;
+    border: 2px solid #5a3c24;
+    border-bottom: 4px solid #6b1f1f;
+    width: 42px;
+    height: 42px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 1.1rem;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    touch-action: manipulation;
+}
+
+.btn-eliminar:active {
+    border-bottom: 2px solid #6b1f1f;
+    transform: translateY(2px);
+}
+
+@keyframes parpadeo {
+    0% { opacity: 1; }
+    50% { opacity: 0.75; }
+    100% { opacity: 1; }
+}
+
+/* ==========================================================================
+   SCROLLBAR ESTILO MADERA
+   ========================================================================== */
+::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background: #1c140d; 
+    border-left: 2px solid #5a3c24;
+}
+::-webkit-scrollbar-thumb {
+    background: #c49a6c; 
+    border: 2px solid #5a3c24;
+    border-radius: 2px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d8b488; 
+}
+
+/* Ajustes finos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    body { padding: 8px; font-size: 1rem; }
+    .contenedor { padding: 12px; }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3.titulo-categoria { font-size: 1.3rem; }
+    .alarma-activa { font-size: 1rem; padding: 10px; }
+    .grid-semillas { grid-template-columns: repeat(auto-fill, minmax(95px, 1fr)); gap: 8px; }
+    button.btn-semilla { font-size: 0.95rem; }
+    button.btn-semilla img { width: 38px; height: 38px; }
+}
+
+/* ==========================================================================
+   MODAL DE INSTRUCCIONES
+   ========================================================================== */
+.btn-info {
+    background-color: #8cc63f;
+    color: #1c140d;
+    border: 2px solid #5a3c24;
+    border-bottom: 4px solid #4a751f;
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 900;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: transform 0.1s;
+}
+
+.btn-info:active {
+    border-bottom: 2px solid #4a751f;
+    transform: translateY(2px);
+}
+
+.modal-oculto {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgba(0,0,0,0.7); 
+    backdrop-filter: blur(3px);
+}
+
+.modal-contenido {
+    background-color: rgba(43, 29, 20, 0.95);
+    margin: 15% auto; 
+    padding: 20px;
+    border: 2px solid #c49a6c;
+    border-radius: 12px;
+    width: 85%;
+    max-width: 450px;
+    color: #e8dcc4;
+    text-align: left;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+.modal-contenido h2 {
+    color: #8cc63f;
+    margin-top: 0;
+    text-align: center;
+}
+
+.modal-contenido ul {
+    padding-left: 20px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.modal-contenido li {
+    margin-bottom: 12px;
+}
+
+.cerrar-modal {
+    color: #b33939;
+    float: right;
+    font-size: 2.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.cerrar-modal:hover {
+    color: #ff5252;
+}
+
+/* ==========================================================================
+   SECCIÓN DE DONACIONES
+   ========================================================================== */
+.seccion-donacion {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgba(28, 20, 13, 0.7);
+    border: 2px dashed #5a3c24;
+    border-radius: 10px;
+}
+
+.btn-donar {
+    background-color: #c86b14; /* Naranja más apagado y elegante */
+    color: #ffffff;
+    border: 2px solid #5a3c24;
+    border-bottom: 4px solid #8c4a0b;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 900;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    transition: transform 0.1s, background-color 0.2s;
+    margin-top: 5px;
+    
+    /* Efecto 3D en el botón */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.4);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-donar-arriba {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Texto de "Copiar Billetera MetaMask" */
+.btn-donar-arriba span {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Sombra para que resalte del fondo */
+}
+
+.icono-metamask {
+    width: 26px; /* Un pelín más grande */
+    height: 26px;
+    filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.7)); /* Sombra para que el logo "salte" */
+}
+
+/* Texto de "USDT (Red Polygon)" */
+.btn-donar small {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fcebd7; /* Un crema clarito */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.btn-donar:hover {
+    background-color: #e07a1b; /* Brilla un poco al pasar el ratón */
+}
+
+.btn-donar:active {
+    border-bottom: 2px solid #8c4a0b;
+    transform: translateY(2px);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+.mensaje-oculto {
+    display: none;
+    color: #8cc63f;
+    font-weight: 900;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    animation: aparecer 0.3s ease-in-out;
+}
+
+@keyframes aparecer {
+    0% { opacity: 0; transform: translateY(-5px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
