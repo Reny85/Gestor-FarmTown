@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Alarmas Farm Town</title>
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="contenedor">
+        <img src="Imagenes_FarmTown/FarmTown_Logo.png" alt="Farm Town Logo" class="logo-juego">
+        
+        <h1>🌱 Gestor de Cosechas</h1>
+        <p>Selecciona la semilla que acabas de plantar:</p>
+        
+        <h3 class="titulo-categoria">🚜 Semillas Regulares</h3>
+        <div id="panel-regulares" class="grid-semillas"></div>
+
+        <h3 class="titulo-categoria">⭐ Semillas Premium</h3>
+        <div id="panel-premium" class="grid-semillas"></div>
+
+        <hr>
+
+        <h2>⏰ Cosechas Pendientes</h2>
+        <div id="panel-alarmas" class="lista-alarmas"></div>
+    </div>
+
+    <audio id="sonido-alarma" src="alarma.mp3?v=5" preload="auto" loop></audio>
+    <audio id="sonido-click" src="click.mp3?v=5" preload="auto"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
