@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Alarmas Farm Town</title>
+    
+    <meta property="og:title" content="Gestor de Cosechas - Farm Town">
+    <meta property="og:description" content="Calcula y gestiona los tiempos exactos de tus siembras en Farm Town. ¡No dejes que se te pase la cosecha!">
+    <meta property="og:image" content="https://reny85.github.io/Gestor-FarmTown/FarmTown_Logo.png">
+    <meta property="og:url" content="https://reny85.github.io/Gestor-FarmTown/">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="contenedor">
+        <img src="Imagenes_FarmTown/FarmTown_Logo.png" alt="Farm Town Logo" class="logo-juego">
+        
+        <h1>🌱 Gestor de Cosechas</h1>
+        <h4 class="subtitulo-juego">Herramienta de apoyo para Farm Town</h4>
+        <p>Selecciona la semilla que vas a plantar:</p>
+
+        <button id="btn-info" class="btn-info">❔ Cómo usar</button>
+
+        <div id="modal-instrucciones" class="modal-oculto">
+            <div class="modal-contenido">
+                <span class="cerrar-modal">&times;</span>
+                <h2>📜 Instrucciones y Estrategia</h2>
+                <ul>
+                    <li>🌱 <b>Activa y luego planta:</b> En esta herramienta toca la semilla *antes* de empezar a sembrarla en el juego.</li>
+                    <li>💡 <b>Consejo de tiempo:</b> Al activar la alarma primero y esperar un minuto (o los minutos que quieras) antes de plantar en el juego, ganarás unos minutos valiosos de ventaja para poder iniciar sesión con calma cuando suene el aviso.</li>
+                    <li>⏳ <b>Cálculo exacto:</b> Verás el día y la hora exacta en la que debes volver.</li>
+                    <li>💾 <b>Autoguardado:</b> Tus alarmas se guardan solas. Puedes actualizar, cerrar la pestaña o el navegador sin perderlas.</li>
+                    <li>🔔 <b>Alerta sonora:</b> ¡Pero ojo! Deja la página abierta de fondo para que el aviso musical te alerte a tiempo.</li>
+                    <li>❌ <b>Cancelar:</b> Toca la 'X' roja si te equivocaste de semilla o quieres borrarla.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h3 class="titulo-categoria">🚜 Semillas Regulares</h3>
+        <div id="panel-regulares" class="grid-semillas"></div>
+
+        <h3 class="titulo-categoria">⭐ Semillas Premium</h3>
+        <div id="panel-premium" class="grid-semillas"></div>
+
+        <hr>
+
+        <h2>⏰ Cosechas Pendientes</h2>
+        <div id="panel-alarmas" class="lista-alarmas"></div>
+
+        <hr>
+
+        <div class="seccion-comunidad">
+            <p>🚜 ¿Juegas Farm Town? ¡Agrégame como amigo!</p>
+            <div class="caja-id">
+                <span class="id-texto">58119945-cf53-466a-b576-6ec502494c70</span>
+                <button id="btn-copiar-id" class="btn-copiar-mini">Copiar ID</button>
+            </div>
+            <div id="mensaje-id-copiado" class="mensaje-oculto">¡ID de Granjero copiado!</div>
+
+            <hr class="separador-mini">
+
+            <p>☕ ¿Te es útil la herramienta? ¡Apoya el proyecto!</p>
+            <button id="btn-donar" class="btn-donar">
+                <div class="btn-donar-arriba">
+                    <img src="LogoMetaMask.svg" alt="MetaMask" class="icono-metamask">
+                    <span>Copiar Billetera MetaMask</span>
+                </div>
+                <small>USDT (Red Polygon)</small>
+            </button>
+            <div id="mensaje-copiado" class="mensaje-oculto">¡Dirección copiada al portapapeles!</div>
+        </div>
+
+    </div>
+
+    <audio id="sonido-alarma" src="alarma.mp3?v=5" preload="auto" loop></audio>
+    <audio id="sonido-click" src="click.mp3?v=5" preload="auto"></audio>
+
+    <script src="app.js"></script>
+</body>
+</html>
